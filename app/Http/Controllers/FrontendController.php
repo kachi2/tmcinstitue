@@ -123,7 +123,12 @@ class FrontendController extends Controller
 
     public function gifted($code, $email,  $recent){
         $toptitle = 'TMC Institute-User Registration';
-        return view('gifted',['gifted_email'=>$email, 'code'=>$code, 'fullname'=>$recent->fullname, 'toptitle'=>$toptitle]);
+        return view('gifted',[
+            'gifted_email'=>$email,
+            'code'=>$code,
+            'fullname'=>$recent->fullname,
+            'toptitle'=>$toptitle
+        ]);
     }
 
     public function mycourses( $personvideos){

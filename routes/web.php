@@ -87,6 +87,8 @@ Route::get('/forgotten/{status}', [viewsController::class, 'forgottenfun']);
 Route::post('/fogotten', [MainConroller::class, 'fogotten']);
 Route::get('/reset/{code}/{status}', [Frontends::class, 'reset']);
 Route::post('/reset', [MainConroller::class, 'reset']);
+Route::get('/contact-us', [Frontends::class, 'contacttmc']);
+Route::post('/contactus', [MainConroller::class, 'contactus']);
 Route::group(['middleware' => 'auth'], function () {
 // Route::get('/courses', [ViewController::class, 'dashfunction']);
 // Route::get('/coursedetails/{num}', [ViewController::class, 'courseinfo']);

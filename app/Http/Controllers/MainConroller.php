@@ -24,6 +24,7 @@ use App\Models\Additional;
 use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 use App\Helper\Help;
 use App\Http\Requests\addmoney;
+use App\Http\Requests\contactusreq;
 use App\Http\Requests\editmoney;
 use App\Http\Requests\forgottens;
 use App\Http\Requests\resetpas;
@@ -31,6 +32,7 @@ use App\Http\Requests\study;
 use App\Http\Resources\courseothm;
 use App\Http\Resources\purchasedcourse;
 use App\Http\Resources\Sturesult;
+use App\Models\Contactus;
 use App\Models\Currncyrate;
 use App\Models\grouppurchase;
 use App\Models\Invoice;
@@ -100,9 +102,9 @@ class MainConroller extends Controller
 
     public function AddCart(Request $request){
         $user = $this->getuser();
-       $usercart = $this->cartadded->where(['user_id'=>$user->id])->first();
+       $usercart = UserCart::where(['user_id'=>$user->id])->first();
        if(!$usercart){
-        $this->cartadded->create([
+        UserCart::create([
             'user_id'=>$user->id,
             'usercartdetails'=>$request->cartitems
         ]);
@@ -728,6 +730,18 @@ return response()->download($output, $output, ['Content-Description: File Transf
 
               return response()->json(['success'=>'you have successfully updated your password']);
         }
+     }
+
+     public function contactus(contactusreq $request){
+        Contactus::create([
+            'firstname'=>$request->firstname,
+            'lastname'=>$request->lastname,
+            'email'=>$request->email,
+            'phone'=>$request->phone,
+            'message'=>$request->message,
+        ]);
+
+        return response()->json(['success'=>'we have your message']);
      }
 
 

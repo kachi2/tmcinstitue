@@ -10,7 +10,7 @@ use Illuminate\Queue\SerializesModels;
 class Allgrouppurchase extends Mailable
 {
     use Queueable, SerializesModels;
-
+    public $data;
     /**
      * Create a new message instance.
      *

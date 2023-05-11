@@ -18,16 +18,16 @@
   <link rel="stylesheet" href="{{ asset('css/icons.css') }}"/>
   <link rel="stylesheet" href="{{ asset('css/uikit.css') }}"/>
   <link rel="stylesheet" href="{{ asset('css/tailwind.min.css') }}"/>
+  <link rel="stylesheet" href="{{ asset('css/quiz.css') }}" />
+  <link href="{{ asset('css/app.css') }}" rel="stylesheet">
   {{--  <link rel="stylesheet" href="{{ asset('css/icons.css') }}}}" />  --}}
   <link rel="shortcut icon" href="https://res.cloudinary.com/the-morgans-consortium/image/upload/v1667831345/Tmc%20institute/fav_dmznt6.jpg" type="image/x-icon"/>
 
-  <link rel="stylesheet" href="{{ asset('css/quiz.css') }}" />
-  <link href="{{ asset('css/app.css') }}" rel="stylesheet">
   <title>{{ $toptitle }}</title>
 </head>
 <body>
 
-@yield('content')
+{{--  @yield('content')  --}}
 
 
 </body>

@@ -11,14 +11,9 @@
 
         <!-- CSS
         ================================================== -->
-        {{--  <link rel="stylesheet" href="../assets/css/uikit.css">
-        <link rel="stylesheet" href="../assets/css/style.css">  --}}
- {{--  <link rel="stylesheet"  href="https://video-react.github.io/assets/video-react.css"/>  --}}
   <link rel="stylesheet" href="{{ asset('css/style.css') }}"/>
-  {{--  <link rel="stylesheet" href="{{ asset('css/icons.css') }}"/>  --}}
   <link rel="stylesheet" href="{{ asset('css/uikit.css') }}"/>
   <link rel="stylesheet" href="{{ asset('css/tailwind.min.css') }}"/>
-  {{--  <link rel="stylesheet" href="{{ asset('css/icons.css') }}}}" />  --}}
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
   <link rel="shortcut icon" href="https://res.cloudinary.com/the-morgans-consortium/image/upload/v1667831345/Tmc%20institute/fav_dmznt6.jpg" type="image/x-icon"/>
 
@@ -34,7 +29,7 @@
           </div>
     {{--  @include('partials.navbar')  --}}
 
-    @yield('content')
+    {{--  @yield('content')  --}}
     {{--  @include('partials.footer')  --}}
     </article>
     </body>

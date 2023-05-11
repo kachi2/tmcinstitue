@@ -9,6 +9,7 @@ use App\Models\Admin;
 use App\Models\CourseInfo;
 use App\Models\grouppurchase;
 use App\Models\User;
+use App\Models\UserCart;
 use App\Models\userscourse;
 use App\Models\UserWatched;
 use Illuminate\Http\Request;
@@ -16,7 +17,7 @@ use Illuminate\Http\Request;
 class ViewController extends Controller
 {
     public function verifiedemail($data){
-        $code =   $this->userinfo->where('verification_code', $data)->first();
+        $code =   User::where('verification_code', $data)->first();
         if($code && $code->is_verfield == 0){
             $code->update([
                 'is_verfield'=>1
@@ -29,7 +30,7 @@ class ViewController extends Controller
     }
 
     public function company_email($data){
-        $code =   $this->userinfo->where('verification_code', $data)->first();
+        $code =   UserCart::where('verification_code', $data)->first();
         if($code){
             $code->update([
                 'is_verfield'=>1
@@ -53,7 +54,8 @@ class ViewController extends Controller
     }
 
     public function paystack_verify($ref){
-        $sercrtKey = "sk_live_abbddba5b0e76737438d1f27f9bdb76e33717e5d";
+        // sk_live_abbddba5b0e76737438d1f27f9bdb76e33717e5d
+        $sercrtKey = "sk_test_8a40b954383a29bc20a711400387d2c3205478f9";
         $curl = curl_init();
         curl_setopt_array($curl, array(
         CURLOPT_URL => "https://api.paystack.co/transaction/verify/$ref",
@@ -80,7 +82,7 @@ class ViewController extends Controller
 
         public function dashfunction (CourseInfo $courseInfo){
             $user = $this->getuser();
-            $cart =  $this->cartadded->where(['user_id'=> $user->id])->first();
+            $cart =  UserCart::where(['user_id'=> $user->id])->first();
             $info = $courseInfo->orderBy('id', 'asc')->get();
             $data =  CourseInfomation::collection($info)->resolve();
             $page= 1;
@@ -105,7 +107,7 @@ class ViewController extends Controller
         public function cartfunction(){
          $user = $this->getuser();
          $money = $this->moneyconvert();
-        $cart =  $this->cartadded->where(['user_id'=> $user->id])->first();
+        $cart =  UserCart::where(['user_id'=> $user->id])->first();
         return FrontendController::cart($cart, $money);
         }
 

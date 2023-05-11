@@ -29,9 +29,9 @@ use Stevebauman\Location\Facades\Location;
 use App\Models\User;
 class Frontends extends Controller
 {
-    public function __construct(){
+    // public function __construct() {
 
-    }
+    // }
 
       public function newdashboard($featured, $popular,  $recent, $cart, $allcourse,  $currencysymbol, $currencyex,  $additionalpic){
         //
@@ -45,7 +45,18 @@ class Frontends extends Controller
         $poundton =  $this->poundtonaira();
         $othermoney =    $this->frompoundtoother();
         $toptitle = 'TMC Institute-Home';
-        return view('newdesign.dashboard',['featured'=>$featured, 'popular'=>$popular, 'recent'=>$recent, 'cart'=>$cart, 'allcourse'=>$allcourse, 'currencysymbol'=>$currencysymbol, 'currencyex'=>$currencyex, 'poundton'=>$poundton, 'othermoney'=>$othermoney, 'toptitle'=>$toptitle, 'additionalpic'=>$additionalpic]);
+        return view('newdesign.dashboard',[
+            'featured'=>$featured, 'popular'=>$popular,
+            'recent'=>$recent,
+            'cart'=>$cart,
+            'allcourse'=>$allcourse,
+            'currencysymbol'=>$currencysymbol,
+            'currencyex'=>$currencyex,
+            'poundton'=>$poundton,
+            'othermoney'=>$othermoney,
+            'toptitle'=>$toptitle,
+            'additionalpic'=>$additionalpic
+        ]);
 
       }
 
@@ -54,8 +65,24 @@ class Frontends extends Controller
         $currencyex =  (new Help)->moneyconvert();
         $poundton =  $this->poundtonaira();
         $othermoney =    $this->frompoundtoother();
+        $cart = Auth::check()? UserCart::where(['user_id'=> auth()->user()->id])->first():'';
 
-          return view('newdesign.courseinfo',['single'=>json_decode($singlecourse), 'video'=>$videos, 'word'=>$word, 'usercourse'=>$usercourse, 'allcourse'=>$allcourse, 'currencysymbol'=>$currencysymbol, 'currencyex'=>$currencyex, 'poundton'=>$poundton, 'othermoney'=>$othermoney, 'additional'=> $additional, 'toptitle'=>$toptitle, 'additionalpic'=>$additionalpic]);
+          return view('newdesign.courseinfo',[
+            'single'=>json_decode($singlecourse),
+            'video'=>$videos,
+            'word'=>$word,
+            'usercourse'=>$usercourse,
+            'allcourse'=>$allcourse,
+            'currencysymbol'=>$currencysymbol,
+            'currencyex'=>$currencyex,
+            'poundton'=>$poundton,
+            'othermoney'=>$othermoney,
+            'additional'=> $additional,
+            'toptitle'=>$toptitle,
+            'additionalpic'=>$additionalpic,
+            'cart'=>$cart,
+
+        ]);
       }
 
 
@@ -66,11 +93,22 @@ class Frontends extends Controller
     //   dd($greatereight);
       $toptitle = 'TMC Institute-Couse Video';
     //   downresult  greatereight  question
-    return view('newdesign.cousevideo', ["fetchdata"=>$fetchdata, "coursepurshase"=>json_decode($coursepurshase), "coursecomplete"=>$coursecomplete, 'question'=>$question, 'num'=>$num, 'word'=>$word, 'downresult'=>$result, 'greatereight'=>$greatereight, 'toptitle'=>$toptitle ]);
+    return view('newdesign.cousevideo', [
+        "fetchdata"=>$fetchdata,
+        "coursepurshase"=>json_decode($coursepurshase),
+        "coursecomplete"=>$coursecomplete,
+        'question'=>$question,
+        'num'=>$num,
+        'word'=>$word,
+        'downresult'=>$result,
+        'greatereight'=>$greatereight,
+        'toptitle'=>$toptitle
+    ]);
 }
 
       public function shoppingcart(){
         $user = $this->getuser();
+        $cart =  $user? UserCart::where('user_id',$user->id)->first():'';
         if($user){
             $poundtodollar =$this->poundconvert();
             $currencysymbol =  (new Help)->getplace();
@@ -79,7 +117,16 @@ class Frontends extends Controller
             $othermoney =    $this->frompoundtoother();
             $toptitle = 'TMC Institute-Shopping Cart';
             $additionalpic =  Auth::check() && Additional::where(['user_id'=>auth()->user()->id])->first() != null?Additional::where(['user_id'=>auth()->user()->id])->first()->image:'https://res.cloudinary.com/the-morgans-consortium/image/upload/v1658329437/Tmc%20institute/blank-profile-picture-gae268b379_1280_gtgqxr.png';            $othermoney =    $this->frompoundtoother();
-            return view('newdesign.shoppingcart', ['currencysymbol'=>$currencysymbol, 'currencyex'=>$currencyex, 'poundtodollar'=>$poundtodollar, 'poundton'=>$poundton, 'othermoney'=>$othermoney, 'toptitle'=>$toptitle, 'additionalpic'=> $additionalpic]);
+            return view('newdesign.shoppingcart', [
+                'currencysymbol'=>$currencysymbol,
+                'currencyex'=>$currencyex,
+                'poundtodollar'=>$poundtodollar,
+                'poundton'=>$poundton,
+                'othermoney'=>$othermoney,
+                'toptitle'=>$toptitle,
+                'additionalpic'=> $additionalpic,
+                'cart'=>$cart,
+            ]);
         }
       }
 
@@ -90,37 +137,77 @@ class Frontends extends Controller
          $currencycode = (new Help)->getplace()->currency->code;
          $toptitle = 'TMC Institute-Term and Conditions';
          $additionalpic =  Auth::check() && Additional::where(['user_id'=>auth()->user()->id])->first() != null?Additional::where(['user_id'=>auth()->user()->id])->first()->image:'https://res.cloudinary.com/the-morgans-consortium/image/upload/v1658329437/Tmc%20institute/blank-profile-picture-gae268b379_1280_gtgqxr.png';            $othermoney =    $this->frompoundtoother();
-         return view('newdesign.conditions', ['currencysymbol'=>$currencysymbol, 'currencyex'=>$currencyex, 'currencycode'=>$currencycode, 'toptitle'=>$toptitle, 'additionalpic'=>$additionalpic]);
+         return view('newdesign.conditions', ['currencysymbol'=>$currencysymbol,
+         'currencyex'=>$currencyex,
+          'currencycode'=>$currencycode,
+          'toptitle'=>$toptitle,
+          'additionalpic'=>$additionalpic
+        ]);
       }
 
       public function listcourses($uni, $pagdata, $currencysymbol, $currencyex, $additionalpic){
         $poundton =  $this->poundtonaira();
         $othermoney =    $this->frompoundtoother();
+        $user = $this->getuser();
+        $cart =  $user? UserCart::where('user_id',$user->id)->first():'';
         $toptitle = 'TMC Institute-TMC Courses';
-        return view('newdesign.listcouses',['unihead'=>$uni, 'coursesdata'=>$pagdata, 'currencysymbol'=>$currencysymbol, 'currencyex'=>$currencyex, 'poundton'=>$poundton, 'othermoney'=>$othermoney, 'toptitle'=>$toptitle, 'additionalpic'=>$additionalpic]);
+        return view('newdesign.listcouses',[
+            'unihead'=>$uni,
+            'coursesdata'=>$pagdata,
+            'currencysymbol'=>$currencysymbol,
+            'currencyex'=>$currencyex,
+            'poundton'=>$poundton,
+            'othermoney'=>$othermoney,
+             'toptitle'=>$toptitle,
+              'additionalpic'=>$additionalpic,
+              'cart'=>$cart,
+            ]);
       }
 
       public function usercourses($pagdata, $currencysymbol, $currencyex, $additionalpic){
+        $user = $this->getuser();
         $poundton =  $this->poundtonaira();
         $othermoney =    $this->frompoundtoother();
         $toptitle = 'TMC Institute-User courses';
-        return view('newdesign.usercourse',['purchasedcourse'=>$pagdata, 'currencysymbol'=>$currencysymbol, 'currencyex'=>$currencyex, 'poundton'=>$poundton, 'othermoney'=>$othermoney, 'toptitle'=>$toptitle, 'additionalpic'=>$additionalpic]);
+        $cart = $user? UserCart::where(['user_id'=> auth()->user()->id])->first():'';
+
+        return view('newdesign.usercourse',[
+            'purchasedcourse'=>$pagdata,
+        'currencysymbol'=>$currencysymbol,
+        'currencyex'=>$currencyex,
+        'poundton'=>$poundton,
+        'othermoney'=>$othermoney,
+        'toptitle'=>$toptitle,
+        'additionalpic'=>$additionalpic,
+        'cart'=>$cart,
+
+    ]);
       }
 
       public function studyabroad(){
+        $user = $this->getuser();
+        $cart = $user? UserCart::where(['user_id'=> auth()->user()->id])->first():'';
         $additionalpic =  Auth::check() && Additional::where(['user_id'=>auth()->user()->id])->first() != null?Additional::where(['user_id'=>auth()->user()->id])->first()->image:'https://res.cloudinary.com/the-morgans-consortium/image/upload/v1658329437/Tmc%20institute/blank-profile-picture-gae268b379_1280_gtgqxr.png';        $currencysymbol =  (new Help)->getplace();
         $currencyex =  (new Help)->moneyconvert();
         $poundton =  $this->poundtonaira();
         $othermoney =    $this->frompoundtoother();
         $toptitle = 'TMC Institute-Study Abroad';
-        return view('newdesign.studyabroad', ['currencysymbol'=>$currencysymbol, 'currencyex'=>$currencyex, 'poundton'=>$poundton, 'othermoney'=>$othermoney, 'toptitle'=>$toptitle, 'additionalpic'=>$additionalpic ]);
+        return view('newdesign.studyabroad', [
+            'currencysymbol'=>$currencysymbol,
+            'currencyex'=>$currencyex,
+            'poundton'=>$poundton,
+            'othermoney'=>$othermoney,
+            'toptitle'=>$toptitle,
+            'additionalpic'=>$additionalpic,
+            'cart'=>$cart,
+         ]);
       }
 
      public function insertothm(){
         return view('newdesign.insertothm');
      }
 
-     public function othmcourses(  othm $othm){
+     public function othmcourses(othm $othm){
         // $user = $this->getuser();
         // if($user){
             $cart = Auth::check()?UserCart::where(['user_id'=>auth()->user()->id])->first():[];
@@ -140,9 +227,15 @@ class Frontends extends Controller
             $poundton =  $this->poundtonaira();
            $additionalpic =  Auth::check() && Additional::where(['user_id'=>auth()->user()->id])->first() != null?Additional::where(['user_id'=>auth()->user()->id])->first()->image:'https://res.cloudinary.com/the-morgans-consortium/image/upload/v1658329437/Tmc%20institute/blank-profile-picture-gae268b379_1280_gtgqxr.png';            $othermoney =    $this->frompoundtoother();
             $toptitle = 'TMC Institute-OTHM';
-            return view('newdesign.courselistothm', ['unihead'=>$uni, 'coursesdata'=>$pagdata,
-          'currencyex'=>$currencyex, 'currencysymbol'=>$currencysymbol,
-           'cart'=>$cart, 'poundton'=>$poundton, 'othermoney'=>$othermoney, 'toptitle'=>$toptitle,
+            return view('newdesign.courselistothm', [
+                'unihead'=>$uni,
+                'coursesdata'=>$pagdata,
+          'currencyex'=>$currencyex,
+          'currencysymbol'=>$currencysymbol,
+           'cart'=>$cart,
+           'poundton'=>$poundton,
+           'othermoney'=>$othermoney,
+           'toptitle'=>$toptitle,
             'additionalpic'=>$additionalpic
         ]);
         // }else{
@@ -172,7 +265,14 @@ class Frontends extends Controller
                     $reminder = $questionremainer->where(['user_id'=>$user->id, 'course_type'=>$course_type, 'course_id'=>$decrypt_id])->first();
                     // dd($reminder);
                     $toptitle = 'TMC Institute-Quiz';
-                    return view('newdesign.quiz', ['quest'=>$quest, 'reminder'=>$reminder, 'course_type'=>$course_type, 'num'=>$decrypt_id, 'toptitle'=> $toptitle,  'coursename'=>$data->coursename]);
+                    return view('newdesign.quiz', [
+                        'quest'=>$quest,
+                        'reminder'=>$reminder,
+                        'course_type'=>$course_type,
+                        'num'=>$decrypt_id,
+                        'toptitle'=> $toptitle,
+                        'coursename'=>$data->coursename
+                    ]);
                 }
             }
 }
@@ -181,7 +281,9 @@ class Frontends extends Controller
                     public function result($code, $coursename){
                       $result = Studentresult::where(['unique_code'=>$code, 'coursename'=>$coursename])->first();
                      $data =  Sturesult::make($result);
-                     return view('newdesign.comfrirmresult', ['data'=>$data]);
+                     return view('newdesign.comfrirmresult', [
+                        'data'=>$data
+                    ]);
                     }
 // https://github.com/brainfoolong/cryptojs-aes-php
  public function adminlog(){
@@ -212,9 +314,16 @@ class Frontends extends Controller
         // dd($dataunApproved);
         $page= 1;
         $pagunAproved =  $this->paginate($dataunApproved, 6, $page);
-        return view('newdesign.admindash', ['currencyex'=>$currencyex, 'currencysymbol'=>$currencysymbol,
-        'poundton'=>$poundton, 'othermoney'=>$othermoney, 'admin'=>$admin, 'dataApproved'=>$pagAproved,
-         'dataunApproved'=>$pagunAproved, 'toptitle'=>$toptitle]);
+        return view('newdesign.admindash', [
+            'currencyex'=>$currencyex,
+            'currencysymbol'=>$currencysymbol,
+        'poundton'=>$poundton,
+        'othermoney'=>$othermoney,
+        'admin'=>$admin,
+        'dataApproved'=>$pagAproved,
+         'dataunApproved'=>$pagunAproved,
+         'toptitle'=>$toptitle
+        ]);
     }else{
         return redirect('/');
     }
@@ -222,7 +331,8 @@ class Frontends extends Controller
 
 
    public function adminrate(){
-    return view('newdesign.adminrate');
+    $toptitle = 'TMC Institute-Exchange rate';
+    return view('newdesign.adminrate',['toptitle'=>$toptitle]);
    }
 
    public function allcurrency(){
@@ -233,18 +343,30 @@ class Frontends extends Controller
 
    public function about(){
     $toptitle = 'TMC Institute-About';
+    $user = $this->getuser();
+    $cart = $user? UserCart::where(['user_id'=> auth()->user()->id])->first():'';
     $currencysymbol =  (new Help)->getplace();
     $currencyex =  (new Help)->moneyconvert();
     $poundton =  $this->poundtonaira();
     $othermoney =    $this->frompoundtoother();
     $additionalpic =  Auth::check() && Additional::where(['user_id'=>auth()->user()->id])->first() != null?Additional::where(['user_id'=>auth()->user()->id])->first()->image:'https://res.cloudinary.com/the-morgans-consortium/image/upload/v1658329437/Tmc%20institute/blank-profile-picture-gae268b379_1280_gtgqxr.png';
-     return view('newdesign.about',['toptitle'=>$toptitle,'currencyex'=>$currencyex, 'currencysymbol'=>$currencysymbol,
-    'poundton'=>$poundton, 'othermoney'=>$othermoney, 'additionalpic'=>$additionalpic]);
+     return view('newdesign.about',[
+        'toptitle'=>$toptitle,
+        'currencyex'=>$currencyex,
+        'currencysymbol'=>$currencysymbol,
+    'poundton'=>$poundton,
+    'othermoney'=>$othermoney,
+    'additionalpic'=>$additionalpic,
+    'cart'=>$cart
+]);
    }
 
    public function forgotten($status){
     $toptitle = 'TMC Institute-forgotten';
-    return view('newdesign.forgotten',['toptitle'=>$toptitle,'status'=>$status]);
+    return view('newdesign.forgotten',[
+        'toptitle'=>$toptitle,
+        'status'=>$status
+    ]);
    }
 
    public function reset($code, $status){
@@ -252,7 +374,10 @@ class Frontends extends Controller
         if($user){
             if($status == 'Individual' || $status == 'Company'){
                 $toptitle = 'TMC Institute-reset';
-                return view('newdesign.resetpass',['toptitle'=>$toptitle,  'status'=>$status, 'code'=>$code]);
+                return view('newdesign.resetpass',[
+                    'toptitle'=>$toptitle,
+                    'status'=>$status,
+                    'code'=>$code]);
 
             }else{
 
@@ -263,6 +388,12 @@ class Frontends extends Controller
             }
 
         }
+   }
+
+   public function contacttmc(){
+    $toptitle = 'TMC Institute-Contact';
+
+    return view('newdesign.contact', ['toptitle'=>$toptitle,]);
    }
 
 }

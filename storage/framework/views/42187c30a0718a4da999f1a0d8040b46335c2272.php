@@ -28,7 +28,7 @@
             </div>
 
           </div>
-<?php echo $__env->yieldContent('content'); ?>
+
     </article>
 </body>
 <script>

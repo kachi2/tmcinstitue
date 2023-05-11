@@ -24,7 +24,7 @@ class viewsController extends Controller
 
     public function newdashboardfun(){
         $user = $this->getuser();
-        $cart = $user? $this->cartadded->where(['user_id'=> $user->id])->first():'';
+        $cart = $user? UserCart::where(['user_id'=> $user->id])->first():'';
         $additionalpic =  Auth::check() && Additional::where(['user_id'=>auth()->user()->id])->first() != null?Additional::where(['user_id'=>auth()->user()->id])->first()->image:'https://res.cloudinary.com/the-morgans-consortium/image/upload/v1658329437/Tmc%20institute/blank-profile-picture-gae268b379_1280_gtgqxr.png';
         $allcourse = CourseInfo::all();
        $allcollection = $user?CourseResource::collection($allcourse):CourseResourcee::collection($allcourse);
@@ -32,7 +32,10 @@ class viewsController extends Controller
       $featuredcollect = $user?CourseResource::collection($featured):CourseResourcee::collection($featured);
     //   CourseResourcee
        $popular =  CourseInfo::where(['price'=>150000.00, 'price'=>180000.00])->orderBy('id', 'desc')->get()->random(5);
-       $popularcollect =  $user?CourseResource::collection($popular):CourseResourcee::collection($popular);
+
+
+       $popularcollect =  $user?CourseResource::collection($popular):CourseResourcee::collection($popular)->resolve();
+
        $recent = CourseInfo::latest()->take(5)->get();
        $recentcollect = $user?CourseResource::collection( $recent):CourseResourcee::collection($recent);
       $show = new Frontends();
@@ -142,7 +145,8 @@ class viewsController extends Controller
         $pagdata =  $this->paginate($data, 6, $page);
         $currencysymbol =  (new Help)->getplace();
         $currencyex =  (new Help)->moneyconvert();
-        $additionalpic =  Auth::check() && Additional::where(['user_id'=>auth()->user()->id])->first() != null?Additional::where(['user_id'=>auth()->user()->id])->first()->image:'https://res.cloudinary.com/the-morgans-consortium/image/upload/v1658329437/Tmc%20institute/blank-profile-picture-gae268b379_1280_gtgqxr.png';         return (new Frontends)->usercourses($pagdata, $currencysymbol, $currencyex,  $additionalpic);
+        $additionalpic =  Auth::check() && Additional::where(['user_id'=>auth()->user()->id])->first() != null?Additional::where(['user_id'=>auth()->user()->id])->first()->image:'https://res.cloudinary.com/the-morgans-consortium/image/upload/v1658329437/Tmc%20institute/blank-profile-picture-gae268b379_1280_gtgqxr.png';
+         return (new Frontends)->usercourses($pagdata, $currencysymbol, $currencyex,  $additionalpic);
     }
 
 

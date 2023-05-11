@@ -39,7 +39,7 @@ class AuthController extends Controller
             }
 
         }else{
-            $user = $this->userinfo->create([
+            $user = User::create([
                 "fullname"=>$userdata->name,
                 "email"=>$userdata->email,
                 "password"=>Hash::make($userdata->id),
@@ -173,7 +173,7 @@ class AuthController extends Controller
 
     public function Register(RegisterValidate $request, Admin $admin, grouppurchase $grouppurchase){
           $request->validated();
-           $user = $this->userinfo->create([
+           $user = User::create([
             "fullname"=>$request->fullname,
             "email"=>$request->email,
             "password"=>Hash::make($request->password),
@@ -280,7 +280,7 @@ class AuthController extends Controller
     public function companyregister(RegisterValidate $request, Admin $admin){
         $request->validated();
 
-         $user = $this->userinfo->create([
+         $user = User::create([
           "fullname"=>$request->fullname,
           "email"=>$request->email,
           "password"=>Hash::make($request->password),

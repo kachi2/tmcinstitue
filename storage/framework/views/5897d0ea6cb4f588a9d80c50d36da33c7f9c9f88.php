@@ -11,14 +11,16 @@
 
         <!-- CSS
         ================================================== -->
-        
- 
-  <link rel="stylesheet" href="<?php echo e(asset('css/style.css')); ?>"/>
-  
-  <link rel="stylesheet" href="<?php echo e(asset('css/uikit.css')); ?>"/>
-  <link rel="stylesheet" href="<?php echo e(asset('css/tailwind.min.css')); ?>"/>
-  
-  <link href="<?php echo e(asset('css/app.css')); ?>" rel="stylesheet">
+  <?php echo app('Illuminate\Foundation\Vite')->reactRefresh(); ?>
+  <?php echo app('Illuminate\Foundation\Vite')([
+    'resources/css/app.css',
+    'resources/css/style.css',
+    'resources/css/uikit.css',
+    'resources/css/tailwind.min.css',
+    'resources/js/app.js',
+    'resources/js/jquery-3.6.0.min.js',
+    'resources/js/uikit.min.js',
+  ]); ?>
   <link rel="shortcut icon" href="https://res.cloudinary.com/the-morgans-consortium/image/upload/v1667831345/Tmc%20institute/fav_dmznt6.jpg" type="image/x-icon"/>
 
 
@@ -29,9 +31,8 @@
 
 
 </body>
-
 <script type="text/javascript">
- var image = "<?php echo e(asset('images/placeholder.png')); ?>"
+ 
  var userpic = <?php echo e(Js::from(auth()->user()->picture??"")); ?>;
 
  var usersemail = <?php echo e(Js::from(auth()->user()->email??"")); ?>
@@ -91,8 +92,6 @@ s1.setAttribute('crossorigin','*');
 s0.parentNode.insertBefore(s1,s0);
 })();
 </script>
-<script src="<?php echo e(mix('js/app.js')); ?>"></script>
-<script src="<?php echo e(asset('js/jquery-3.6.0.min.js')); ?>"></script>
-<script src="<?php echo e(asset('js/uikit.min.js')); ?>"></script>
+
 </html>
 <?php /**PATH C:\xampp\htdocs\dashboard\project\tmc_instutute_recent\resources\views/newdesign/layout/first.blade.php ENDPATH**/ ?>

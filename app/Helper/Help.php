@@ -59,7 +59,7 @@ class Help{
     // 96.158.226.150 - U.S.A
     // 175.200.244.203 - South Korea
     // 92.119.176.178 - United Kingdom
-    $ip = '175.200.244.203';
+    $ip = '102.89.43.175';
     // $ip = $this->get_client_ip();
 
     curl_setopt_array($curl, array(

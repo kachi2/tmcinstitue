@@ -11,30 +11,29 @@
 
         <!-- CSS
         ================================================== -->
-        {{--  <link rel="stylesheet" href="../assets/css/uikit.css">
-        <link rel="stylesheet" href="../assets/css/style.css">  --}}
- {{--  <link rel="stylesheet"  href="https://video-react.github.io/assets/video-react.css"/>  --}}
-  <link rel="stylesheet" href="{{ asset('css/style.css') }}"/>
-  {{--  <link rel="stylesheet" href="{{ asset('css/icons.css') }}"/>  --}}
-  <link rel="stylesheet" href="{{ asset('css/uikit.css') }}"/>
-  <link rel="stylesheet" href="{{ asset('css/tailwind.min.css') }}"/>
-  {{--  <link rel="stylesheet" href="{{ asset('css/icons.css') }}}}" />  --}}
-  <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+  @viteReactRefresh
+  @vite([
+    'resources/css/app.css',
+    'resources/css/style.css',
+    'resources/css/uikit.css',
+    'resources/css/tailwind.min.css',
+    'resources/js/app.js',
+    'resources/js/jquery-3.6.0.min.js',
+    'resources/js/uikit.min.js',
+  ])
   <link rel="shortcut icon" href="https://res.cloudinary.com/the-morgans-consortium/image/upload/v1667831345/Tmc%20institute/fav_dmznt6.jpg" type="image/x-icon"/>
 
 
 </head>
 <body>
 
-@yield('content')
+{{--  @yield('content')  --}}
 
 
 </body>
-{{--  <script src="https://www.paypal.com/sdk/js?client-id=AYauehWxDIcW5N-L432YO1bcyGnqy4lzfx00pdgX5VLRlm0qQ48rKn4odTFy8J_bWdUi57eOAS8c1ato&components=buttons"></script>  --}}
 <script type="text/javascript">
- var image = "{{ asset('images/placeholder.png') }}"
+ {{--  var image = "{{ asset('images/placeholder.png') }}"  --}}
  var userpic = {{ Js::from(auth()->user()->picture??"") }};
-
  var usersemail = {{ Js::from(auth()->user()->email??"") }}
  var username = @json(session()->get('userdetail')->fullname??"");
  var featured  = {{ Js::from($featured??"") }};
@@ -72,7 +71,4 @@ s1.setAttribute('crossorigin','*');
 s0.parentNode.insertBefore(s1,s0);
 })();
 </script>
-<script src="{{ mix('js/app.js') }}"></script>
-<script src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>
-<script src="{{ asset('js/uikit.min.js') }}"></script>
 </html>

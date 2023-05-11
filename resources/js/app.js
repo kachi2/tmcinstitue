@@ -3,8 +3,9 @@
  * includes React and other helpers. It's a great starting point while
  * building robust, powerful web applications using React + Laravel.
  */
-
-require('./bootstrap');
+import './bootstrap';
+import './components/new/Dasboard';
+// require('./bootstrap');
 
 /**
  * Next, we will create a fresh React component instance and attach it to
@@ -12,50 +13,37 @@ require('./bootstrap');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-// require('./components/Landing');
-// require('./components/Navbar');
-require('./components/Signup');
-require('./components/Login');
-// require('./components/Home');
-// require('./components/Footer');
-require('./components/Activation');
-require('./components/EmailVerified');
-// require('./components/CourseDetail');
-// require('./components/Cart');
-// require('./components/Mainpage');
-require('./components/Profile');
-// require('./components/Input');
-require('./components/Contactdetails');
-require('./components/Residential');
-// require('./components/Snatika');
-require('./components/Question');
-require('./components/Adminregister');
-require('./components/Companyemail');
-require('./components/Companylogin');
-require('./components/Gifted');
-// require('./components/Mycourse');
-// require('./components/Aboutcourse');
-// require('./components/Pdftest');
-require('./components/Privacy');
-require('./components/new/Dasboard');
-require('./components/new/Course-info');
-require('./components/new/Coursewatch');
-require('./components/new/Shopping');
-require('./components/new/Conditions');
-require('./components/new/ListCouses');
-require('./components/new/Usercourse');
-require('./components/new/Study');
-// require('./components/new/Othm');
-require('./components/new/Coureselistothm');
-require('./components/new/Quiz');
-require('./components/new/Comfirmresult');
-require('./components/new/AdminLogin');
-require('./components/new/AdminDashboard');
-require('./components/new/Authcallback');
-require('./components/new/Adminrate');
-require('./components/new/About');
-require('./components/new/Forgotten');
-require('./components/new/Reset');
+// require('./components/Signup');
+// require('./components/Login');
+// require('./components/Activation');
+// require('./components/EmailVerified');
+// require('./components/Profile');
+// require('./components/Contactdetails');
+// require('./components/Residential');
+// require('./components/Question');
+// require('./components/Adminregister');
+// require('./components/Companyemail');
+// require('./components/Companylogin');
+// require('./components/Gifted');
+// require('./components/Privacy');
+// require('./components/new/Dasboard');
+// require('./components/new/Course-info');
+// require('./components/new/Coursewatch');
+// require('./components/new/Shopping');
+// require('./components/new/Conditions');
+// require('./components/new/ListCouses');
+// require('./components/new/Usercourse');
+// require('./components/new/Study');
+// require('./components/new/Coureselistothm');
+// require('./components/new/Quiz');
+// require('./components/new/Comfirmresult');
+// require('./components/new/AdminLogin');
+// require('./components/new/AdminDashboard');
+// require('./components/new/Authcallback');
+// require('./components/new/Adminrate');
+// require('./components/new/About');
+// require('./components/new/Forgotten');
+// require('./components/new/Reset');
 // auth/google/callback
 // Tmc-Institute
 // https://tmcinstitute.com/

@@ -28,7 +28,7 @@
             </div>
 
           </div>
-@yield('content')
+{{--  @yield('content')  --}}
     </article>
 </body>
 <script>

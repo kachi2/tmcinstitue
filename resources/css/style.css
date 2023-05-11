@@ -1909,9 +1909,9 @@ select.bs-select-hidden, select.selectpicker {
   color: rgba(0, 0, 0, 0.54);
 }
 
-.uk-open > .uk-accordion-title::before {
+/* .uk-open > .uk-accordion-title::before {
   content: "\e931";
-}
+} */
 
 .dropup, .dropdown {
   position: relative;
@@ -6943,7 +6943,7 @@ header .header_inner .left-side .triger {
   display: none;
 }
 
-header .header_inner .left-side .triger::before {
+/* header .header_inner .left-side .triger::before {
   font-family: "Feather-Icons";
   font-size: 22px;
   content: '\e98f';
@@ -6953,7 +6953,7 @@ header .header_inner .left-side .triger::before {
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
   position: absolute;
-}
+} */
 
 header .header_inner .right-side {
   display: -webkit-box;
@@ -7470,11 +7470,11 @@ header.is_fixed {
 
 .dropdown_cart ul li .cart_text h4 {
   line-height: 25px;
-  font-size: 14.5px;
+  font-size: 10.5px;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
-  overflow: hidden;
+  /* overflow: hidden; */
   font-weight: 500;
 }
 
@@ -8802,7 +8802,7 @@ header .header_inner,
   display: -ms-flexbox;
   display: flex;
   padding: 0 15px;
-  overflow-x: auto;
+  /* overflow-x: auto; */
   -webkit-overflow-scrolling: touch;
 }
 
@@ -8964,7 +8964,7 @@ header .header_inner,
   display: none;
 }
 
-.course-watch .sidebar .btn-close-mobi::before {
+/* .course-watch .sidebar .btn-close-mobi::before {
   font-family: "Feather-Icons";
   font-size: 22px;
   content: '\e98f';
@@ -8974,7 +8974,7 @@ header .header_inner,
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
   position: absolute;
-}
+} */
 
 @media (min-width: 1024px) {
   .course-watch .sidebar {
@@ -9054,9 +9054,9 @@ header .header_inner,
     color: white;
     background: #1438ff;
   }
-  .course-watch.is-active .btn-close-mobi::before {
+  /* .course-watch.is-active .btn-close-mobi::before {
     content: '\ea02';
-  }
+  } */
 }
 
 @media (max-width: 400px) {
@@ -9330,14 +9330,14 @@ input[type="button"].dark1, input[type="submit"].dark1 {
   display: inline-block;
 }
 
-.breadcrumb ul li:after {
+/* .breadcrumb ul li:after {
   content: '\e930';
   color: #434343;
   padding: 0 2px;
   display: inline-block;
   font-size: 14px;
   font-family: "Feather-Icons";
-}
+} */
 
 .breadcrumb ul li a {
   font-weight: 500;
@@ -9421,6 +9421,8 @@ input[type="button"].dark1, input[type="submit"].dark1 {
           transform: translateX(17px);
   background: #62d76b;
 }
+
+
 
 /* -------------------------------------------------------------- */
 /* 05. Add your custom classes

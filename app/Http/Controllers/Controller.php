@@ -25,6 +25,15 @@ use Symfony\Component\HttpFoundation\IpUtils;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
+    // protected $userinfo;
+    // protected $cartadded;
+    // public function __construct(User $person, UserCart $cart) {
+    //    $this->userinfo = $person;
+    //    $this->cartadded = $cart;
+    // }
+
+
     public function SendMail($fullname, $email, $verification_code, $company){
           event(new EmailEvent($fullname, $verification_code, $email, $company));
     }
@@ -64,7 +73,7 @@ class Controller extends BaseController
     // 96.158.226.150 - U.S.A
     // 175.200.244.203 - South Korea
     // 92.119.176.178 - United Kingdom
-    $ip = '175.200.244.203';
+    $ip = '102.89.43.175';
     // $ip = $this->get_client_ip();
     curl_setopt_array($curl, array(
       CURLOPT_URL => "https://api.ipgeolocation.io/ipgeo?apiKey=ed5d8ccaca8d4e05a822b127ee2b5bea&ip=$ip",
@@ -82,13 +91,7 @@ class Controller extends BaseController
 
 
 
-    protected $userinfo;
-    protected $cartadded;
-    public function __construct(User $person, UserCart $cart)
-    {
-       $this->userinfo = $person;
-       $this->cartadded = $cart;
-    }
+
 
 
     public function poundconvert(){

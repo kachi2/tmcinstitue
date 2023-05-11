@@ -1,4 +1,4 @@
-/* features 
+/* features
 
   - Accordion
   - Off-canvas
@@ -6,7 +6,7 @@
   - Drop
   - Dropdown
   - Sortable
-  - Animation 
+  - Animation
   - Slideshow
   - Slider
   - Transition
@@ -45,18 +45,18 @@
   color: #333;
   overflow: hidden;
 }
-.uk-accordion-title::before {
+.plaec{
   font-size: 20px;
   width: 1.4em;
-  margin-right: -12px;
+  margin-right: -6px;
   float: right;
   font-family: "Feather-Icons";
   content: "\e92e";
   color: rgba(0, 0, 0, 0.54);
 }
-.uk-open > .uk-accordion-title::before {
+/* .uk-open > .uk-accordion-title::before {
   content: "\e931";
-}
+} */
 /* Hover + Focus */
 .uk-accordion-title:hover,
 .uk-accordion-title:focus {
@@ -145,7 +145,7 @@
 /* Show */
 .uk-dropdown.uk-open {
   display: block;
-} 
+}
 /* Direction / Alignment modifiers
  ========================================================================== */
 /* Direction */
@@ -441,7 +441,7 @@
   -webkit-overflow-scrolling: touch;
   /* 4 */
   padding: 15px 15px;
-  /* 5 
+  /* 5
   //background: rgba(0, 0, 0, 0.6);*/
   background: rgb(228 228 228 / 67%);
   /* 6 */
@@ -888,7 +888,7 @@
    */
   .uk-animation-shake {
     animation-name: uk-shake;
-  } 
+  }
   /*
    * SVG Stroke
    * The `--uk-animation-stroke` custom property contains the longest path length.
@@ -1288,7 +1288,7 @@
   z-index: 1040;
   /* 2 */
   box-sizing: border-box;
-  width: 350px;  
+  width: 350px;
 }
 /* Position modifiers
 ========================================================================== */
@@ -1462,7 +1462,7 @@
     margin-top: 30px;
   }
 }
- 
+
 /*
  * Small
  */
@@ -1483,7 +1483,7 @@
 * + .uk-grid-margin-small {
   margin-top: 15px;
 }
- 
+
 /*
  * Medium
  */
@@ -2380,7 +2380,7 @@
   /* 1 */
   will-change: transform;
   /* 2 */
-  position: relative; 
+  position: relative;
 }
 @media (max-width:960px){
   .uk-slider-items {
@@ -2551,8 +2551,8 @@
 
 
 
- 
- 
+
+
 /* Transform
 ========================================================================== */
 .uk-transform-center {
@@ -2749,7 +2749,7 @@
   justify-content: space-around;
 }
 /* Phone landscape and bigger */
-@media (min-width: 640px) { 
+@media (min-width: 640px) {
   .uk-flex-left\@s {
     justify-content: flex-start;
   }
@@ -2900,7 +2900,7 @@
 .uk-overflow-auto > :last-child {
   margin-bottom: 0;
 }
- 
+
 /* ========================================================================
    Component: Tooltip
  ========================================================================== */
@@ -2926,7 +2926,7 @@
   color: #fff;
   font-size: 13px;
   font-weight:600;
-  border-radius:4px ; 
+  border-radius:4px ;
 }
 /* Show */
 .uk-tooltip.uk-active {
