@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,14 +12,13 @@
 
         <!-- CSS
         ================================================== -->
-        <link rel="stylesheet"  href="https://video-react.github.io/assets/video-react.css"/>
   <?php echo app('Illuminate\Foundation\Vite')->reactRefresh(); ?>
   <?php echo app('Illuminate\Foundation\Vite')([
     'resources/css/app.css',
     'resources/css/style.css',
     'resources/css/uikit.css',
     'resources/css/tailwind.min.css',
-    'resources/js/components/new/Usercourse.jsx',
+    'resources/js/components/new/Dasboard.jsx',
     'resources/js/jquery-3.6.0.min.js',
     'resources/js/uikit.min.js',
   ]); ?>
@@ -27,14 +27,21 @@
 
 </head>
 <body>
-<div id="usercourses"></div>
+<div id="newdash">
+
+</div>
+
 </body>
 <script type="text/javascript">
     var userpic = <?php echo e(Js::from(auth()->user()->picture??"")); ?>;
     var usersemail = <?php echo e(Js::from(auth()->user()->email??"")); ?>
 
     var username = <?php echo json_encode(session()->get('userdetail')->fullname??"", 15, 512) ?>;
-    var purchasedcourse = <?php echo e(Js::from($purchasedcourse??"")); ?>
+    var featured  = <?php echo e(Js::from($featured??"")); ?>;
+    var popular = <?php echo e(Js::from($popular??"")); ?>;
+    var recent = <?php echo e(Js::from($recent??"")); ?>;
+    var cart = <?php echo e(Js::from(json_decode($cart->usercartdetails??''))); ?>;
+    var allcourse = <?php echo e(Js::from($allcourse??"")); ?>
 
     var currencysymbol = <?php echo e(Js::from($currencysymbol??"")); ?>
 
@@ -45,19 +52,16 @@
     var othersmoneys = <?php echo e(Js::from($othermoney??"")); ?>;
     var additionalpic = <?php echo e(JS::from($additionalpic??"")); ?>
 
-    var cart = <?php echo e(Js::from(json_decode($cart->usercartdetails??''))); ?>;
-
-
-      var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-      (function(){
-      var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-      s1.async=true;
-      s1.src='https://embed.tawk.to/6311da2337898912e966ce56/1gburo81e';
-      s1.charset='UTF-8';
-      s1.setAttribute('crossorigin','*');
-      s0.parentNode.insertBefore(s1,s0);
-      })();
-  </script>
-  </html>
-
-<?php /**PATH C:\xampp\htdocs\solution_tmc_work\tmc_instutute_recent\resources\views/newdesign/usercourse.blade.php ENDPATH**/ ?>
+    var username = <?php echo json_encode(session()->get('userdetail')->fullname??"", 15, 512) ?>;
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/6311da2337898912e966ce56/1gburo81e';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
+</script>
+</html>
+<?php /**PATH /Applications/XAMPP/xamppfiles/htdocs/tmc_institute/resources/views/newdesign/dashboard.blade.php ENDPATH**/ ?>
